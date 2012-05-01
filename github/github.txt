@@ -1,0 +1,124 @@
+<[autotemplate]
+usepackage=[utf8]{inputenc}
+titleframe=True
+title={Git and GitHub}
+usetheme={Boadilla}
+usecolortheme={whale}
+author={Bill Woodward}
+institute={Rackspace}
+date={November 2nd, 2011}
+[autotemplate]>
+
+== Introduction ==
+
+==== Version Control System ====
+* Store source code
+* Track history
+* Recover from errors
+* Mark historical artifacts (tag a release)
+* Manage copies of code (branches)
+
+==== Client-Server Model ====
+* Source code stored on server
+* User checks out copies of the contents
+* Advantages
+** Trunk/branches/tags all on single server
+** Easy to backup, easy to control access
+* Disadvantages 
+** Can't checkin if can't connect to server
+
+==== Distributed Version Control System ====
+* User clones repository (with all revisions)
+* User checks in changes to local repository
+* Changes are pushed back to parent repository
+* Advantages
+** Local copy of repository
+** Local checkins, branching and merging
+* Disadvantages
+** More complicated checkin process
+** More complicated architecture can be confusing
+
+== GitHub ==
+
+==== Why GitHub? ====
+* Git Repository Server
+* User Management
+* Security
+* Code Review Tools
+
+==== Git Repository Server ====
+* Clone repositories from GitHub
+* Push changes to GitHub
+* Manage Branches
+* Fork repositories
+
+==== User Management ====
+* Configure what users can access repositories
+* Private repositories hidden from unauthorized users
+* Manage SSH keys for secure data transport
+* Change notification (email and GitHub messages)
+
+==== Security ====
+* SSH for encryption and identity verification
+* Private repositories
+* Read-only access to repositories
+
+==== Code Review Tools ====
+* Pull requests
+* In-line comments
+* Overall comments
+* Merge to master after review
+
+==== Other Features ====
+* Web-based file editing
+* Issue tracking
+* Wiki
+* Gists
+
+== GitHub Workflow ==
+
+==== Reach ====
+* Clone master to local repository
+* Create branch for work
+* Make code changes
+* Commit to branch in local repository
+* Push to branch on GitHub
+* Create pull request
+* Review
+* Merge to master on GitHub
+
+==== Pull Requests ====
+* Allow for review of changes in a branch
+* Review diff against master, not commits
+* Displays current mergability status
+* Button push to merge to master
+
+==== Forking ====
+* Clones a repository into your account
+* Useful for read-only repositories
+* Stay in sync with upstream repository
+* GitHub concept
+
+== Subversion ==
+
+==== Moving from SVN to GitHub ====
+* Create empty repository on GitHub
+* 'git svn clone' your subversion repository
+* Add GitHub repository as remote
+* Push local repository to GitHub
+* Stop using Subversion
+
+==== GitHub vs. GitHub:Enterprise ====
+* Reach uses private repositories on GitHub
+* Reach repos mirrored on https://github.rackspace.com/
+* GitHub:Enterprise is GitHub, just hosted internally
+* Rackspace SSO integration
+
+==== More Information ====
+* \href{http://www.git-scm.com}{\color{blue}{Git Home Page}} - http://www.git-scm.com
+* \href{http://book.git-scm.com}{\color{blue}{Git Community Book}} - http://book.git-scm.com
+* \href{http://marklodato.github.com/visual-git-guide}{\color{blue}{Visual Git Reference}} - http://marklodato.github.com/visual-git-guide
+* \href{http://sixrevisions.com/web-development/introductory-guide-to-git-version-control-system}{\color{blue}{Introductory Guide to Git}} - http://sixrevisions.com/web-development/introductory-guide-to-git-version-control-system
+* \href{http://progit.org/book}{\color{blue}{Pro Git Book}} - http://progit.org/book
+* \href{http://www.gitguys.com}{\color{blue}{GitGuys}} - http://www.gitguys.com
+

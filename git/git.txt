@@ -1,0 +1,180 @@
+<[autotemplate]
+usepackage=[utf8]{inputenc}
+titleframe=True
+title={The Git Version Control System}
+usetheme={Boadilla}
+usecolortheme={whale}
+author={Bill Woodward}
+institute={Rackspace}
+date={November 2nd, 2011}
+[autotemplate]>
+
+== Introduction ==
+
+==== Version Control System ====
+* Store source code
+* Track history
+* Recover from errors
+* Mark historical artifacts (tag a release)
+* Manage copies of code (branches)
+
+==== Client-Server Model ====
+* Source code stored on server
+* User checks out copies of the contents
+* Advantages
+** Trunk/branches/tags all on single server
+** Easy to backup, easy to control access
+* Disadvantages 
+** Can't checkin if can't connect to server
+
+==== Distributed Version Control System ====
+* User clones repository (with all revisions)
+* User checks in changes to local repository
+* Changes are pushed back to parent repository
+* Advantages
+** Local copy of repository
+** Local checkins, branching and merging
+** Can build more complicated architectures
+* Disadvantages
+** More complicated checkin process
+** More complicated architectures can be confusing
+
+== Git ==
+
+==== Git Structure ====
+* .git directory
+** Project information and file blobs are stored here.
+* Files as blobs
+** Files are stored as blobs of data identified by an SHA1 (160-bit) hash. 
+** Each file has a pointer to its previous version.
+* Git repository as tree of blobs
+** Each branch in a Git repository is just a tree of file blobs with pointers to the head of the tree. 
+** Updating is often just repositioning a pointer.
+* From trunk/tags/branches to SHA1 hashes
+** Unlike Subversion, all code is in same tree. When checkout a branch, only checkout the changes.
+* Local vs. Remote repositories
+** Local repositories allow developer branch and merge without affecting the main repository.
+
+==== Git Topologies ====
+* Local repository
+* One main remote repository
+** Users clone repository, make changes, push back to main repository
+** Similar to SVN model
+* One main remote repository, cloned feature repositories
+** Users clone feature repository, make changes, push back to feature repository
+** One or more authoritative user pulls change from feature repository into main repository
+** The Linux git model
+
+==== The Git Index ====
+
+* Git differentiates between files that are modified and files that are ready to be checked in
+* The index is a staging area where you stage files for checkin
+* Files exist in the working directory
+* Files cannot be checked in until they are added to the index
+
+== Working With Git ==
+
+==== Creating a Repository ====
+* git init - Creates an empty repository
+{\hspace{0.25in}\centering <<<git-init.png,height=0.4\textheight>>>}
+
+==== Creating a Repository ====
+* git clone - Makes a copy of a repository
+* Supports file, ssh, git, http(s), ftp(s), and rsync protocols, and can be extended for others.
+{\hspace{0.25in}\centering <<<git-clone.png,height=0.3\textheight>>>}
+
+==== Checking Out Code ====
+* git branch - Lists or creates branches in the repository
+{\hspace{0.25in}\centering <<<git-branch.png,height=0.35\textheight>>>}
+
+==== Checking Out Code ====
+* git checkout - Switches to another branch
+* Branch and checkout can be combined into one step
+{\hspace{0.25in}\centering <<<git-checkout.png,height=0.5\textheight>>>}
+
+==== Checking Out Code ====
+* git fetch - Retrieves updates from a remote repository
+{\hspace{0.25in}\centering <<<git-fetch.png,height=0.5\textheight>>>}
+
+==== Checking Out Code ====
+* git merge - Joins two or more development histories
+{\hspace{0.25in}\centering <<<git-merge.png,height=0.5\textheight>>>}
+* git pull - Performs a fetch and merge, then commits silently
+* git rebase - Forward-port a set of commits from one branch to the head of another
+
+==== Commiting Code ====
+* git status - Shows the status of the working directory
+{\hspace{0.25in}\centering <<<git-status.png,height=0.5\textheight>>>}
+
+==== Commiting Code ====
+* git add - Stages a file for commit
+* Used for both adding new files and for staging modified files
+{\hspace{0.25in}\centering <<<git-add.png,height=0.5\textheight>>>}
+
+==== Commiting Code ====
+* git commit - Records changes to the repository
+{\hspace{0.25in}\centering <<<git-commit.png,height=0.4\textheight>>>}
+
+==== Recovering From Errors ====
+* git commit --amend - Amends the last commit of the current branch
+* git reset - Resets the HEAD of the current branch
+{\hspace{0.25in}\centering <<<recover.png,height=0.55\textheight>>>}
+
+==== Viewing History ====
+* git log - Shows commit logs
+{\hspace{0.25in}\centering <<<git-log.png,height=0.5\textheight>>>}
+
+==== Viewing History ====
+* git show - Shows a commit (or tag, blob, or tree)
+{\hspace{0.25in}\centering <<<git-show.png,height=0.6\textheight>>>}
+
+==== Viewing History ====
+* git blame - Shows what revision and author last modified each line of a file
+{\hspace{0.25in}\centering <<<git-blame.png,height=0.35\textheight>>>}
+
+==== Viewing History ====
+* git diff - Shows changes between commits, commit and working tree, etc
+{\hspace{0.25in}\centering <<<git-diff.png,height=0.6\textheight>>>}
+
+==== Working With Remote Repositories ====
+* git remote - Manages the set of remote repositories that are tracked by the local repository
+{\hspace{0.25in}\centering <<<git-remote.png,height=0.08\textheight>>>}
+* git push - Updates remote repositories from the local repository
+{\hspace{0.25in}\centering <<<git-push.png,height=0.2\textheight>>>}
+* git pull - Fetches and merges changes from another repository
+{\hspace{0.25in}\centering <<<git-pull.png,height=0.26\textheight>>>}
+ 
+==== What Else? ====
+* git config - Gets and sets configuration options (for example, default user name and password)
+* git mv - Move or rename a file or directory
+* git rm - Remove files from the working tree and the index
+* git stash - Stashes the changes in a dirty working directory
+* git cherry-pick - Applies the changes introduced by some existing commits
+** Merging updates the tree with all changes up to a given commit
+** Cherry picking applies the changes from a given commit, but not changes leading up to that commit
+* git bisect - Facilitates a binary search to find a change that introduced a bug
+
+==== Subversion Integration ====
+* git svn clone - Checks out a Subversion repository as a git repository
+** Subversion trunk, branches, and tags are checked out as git branches
+** Each Subversion revision is checked out as a git revision with metadata to map back to the svn revision
+{\hspace{0.25in}\centering <<<git-svn-clone.png,height=0.2\textheight>>>}
+
+==== Subversion Integration ====
+* git svn rebase - Fetches revisions from the Subversion repository into the git repository
+{\hspace{0.25in}\centering <<<git-svn-rebase.png,height=0.3\textheight>>>}
+
+==== Subversion Integration ====
+* git svn dcommit - Commits each git revision to the Subversion repository as a Subversion commit
+** First commits any new git revisions to the Subversion repository
+** Second performs a rebase to get the latest code from the Subversion repository
+{\hspace{0.25in}\centering <<<git-svn-dcommit.png,height=0.4\textheight>>>}
+
+==== More Information ====
+* \href{http://www.git-scm.com}{\color{blue}{Git Home Page}} - http://www.git-scm.com
+* \href{http://book.git-scm.com}{\color{blue}{Git Community Book}} - http://book.git-scm.com
+* \href{http://marklodato.github.com/visual-git-guide}{\color{blue}{Visual Git Reference}} - http://marklodato.github.com/visual-git-guide
+* \href{http://sixrevisions.com/web-development/introductory-guide-to-git-version-control-system}{\color{blue}{Introductory Guide to Git}} - http://sixrevisions.com/web-development/introductory-guide-to-git-version-control-system
+* \href{http://progit.org/book}{\color{blue}{Pro Git Book}} - http://progit.org/book
+* \href{http://www.gitguys.com}{\color{blue}{GitGuys}} - http://www.gitguys.com
+
