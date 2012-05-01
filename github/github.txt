@@ -6,7 +6,6 @@ usetheme={Boadilla}
 usecolortheme={whale}
 author={Bill Woodward}
 institute={Rackspace}
-date={November 2nd, 2011}
 [autotemplate]>
 
 == Introduction ==
@@ -78,14 +77,14 @@ date={November 2nd, 2011}
 == GitHub Workflow ==
 
 ==== Reach ====
-* Clone master to local repository
-* Create branch for work
-* Make code changes
-* Commit to branch in local repository
-* Push to branch on GitHub
-* Create pull request
-* Review
-* Merge to master on GitHub
+# Clone master to local repository
+# Create branch for work
+# Make code changes
+# Commit to branch in local repository
+# Push to branch on GitHub
+# Create pull request
+# Review
+# Merge to master on GitHub
 
 ==== Pull Requests ====
 * Allow for review of changes in a branch
